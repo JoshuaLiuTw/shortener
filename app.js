@@ -55,12 +55,12 @@ app.post('/', (req, res) => {
   return Shortener.findOne({ originalUrl })
     .then((result) => {
       if (result) {//資料庫有該筆資料
-        
-        res.render('index')
+
+        res.render('index', { shortUrl: result.shortenUrl })
 
       } else {//找不到資料庫有該筆資料
         return Shortener.create({ originalUrl, shortenUrl })     // 存入資料庫
-          .then((data) => res.render("index", { shortUrl:data.shortenUrl }))
+          .then((data) => res.render('index', { shortUrl: data.shortenUrl }))
           .catch(error => console.log(error))
       }
 
