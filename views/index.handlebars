@@ -1,8 +1,32 @@
 <!-- ./view/index.handlebars -->
+{{#if shortUrl}}
 
-<h1>URL Shortener</h1>
+<h1>Success!Please use this link:</h1>
+<input type="text" value={{shortUrl}} id="myInput">
 
+<button onclick="copy()">Copy</button>
+
+
+<script>
+  function copy() {
+    // Get the text field
+    var copyText = document.getElementById("myInput")
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value)
+
+    // Alert the copied text
+    alert("Copied the Url")
+  }
+</script>
+
+
+
+
+
+{{else}}
 <form action="/" method="POST">
-  <input type="url" placeholder="Input URL here" name="name" required>
+  <input type="url" placeholder="Input URL here" name="originalUrl" required>
   <button type="submit">Shorten</button>
 </form>
+{{/if}}

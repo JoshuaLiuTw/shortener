@@ -1,10 +1,3 @@
-function sample(array) {
-
-  const index = Math.floor(Math.random() * 62)
-  return array(index)
-
-}
-
 function generateUrl() {
 
   const data = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -13,11 +6,13 @@ function generateUrl() {
   let password = ''
 
   for (let i = 0; i < 5; i++) {
-
-    password += sample(collection)
+    const index = Math.floor(Math.random() * 62)
+    password += collection[index]
 
   }
-  const url = 'localhost:3000' + password
+  const url = 'localhost:3000/' + password
 
   return url
 }
+
+module.exports = generateUrl

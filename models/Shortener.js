@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const shortenerSchema = new Schema({
-  name: {
-    type: String, // 資料型別是字串
-    required: true // 這是個必填欄位
+  originalUrl: {
+    type: String // 資料型別是字串
+
   },
-  done: {
-    type: String,
-    required: true
+  shortenUrl: {
+    type: String
+
   }
 })
 
